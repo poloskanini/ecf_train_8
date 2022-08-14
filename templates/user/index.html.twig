@@ -14,17 +14,35 @@
     {% for user in users %}
         {{ dump(user) }}
 
-        Nom du contact client : {{ user.name }} <br>
+        Nom du contact client User: {{ user.name }} <br>
 
-        Email du contact client : {{ user.email }} <br>
+        Email du contact client User: {{ user.email }} <br>
 
-        Role :
+        Role du client User:
         {% for role in user.roles %}
             {{ role }}
-        {% endfor %} <br>
+        {% endfor %}
+        <br>
+        <br>
+
+         {% if user.partner.id is defined %}
+        Nom du partenaire : {{ user.partner.name }} <br>
+        Fonctionnalités activées :
+        <ul>
+        {% for permission in user.partner.permissions %}
+            <li>
+                {% for key, value in permission %}
+                    {{ key }} : {{ value }}
+                {% endfor %}
+            </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+
 
         {% if user.structure.id is defined %}
         Adresse postale de la structure : {{ user.structure.postalAdress }} <br>
+        Cette structure est rattachée au PARTENAIRE => {{ user.structure.partner.name}} <br>
         Fonctionnalités activées :
         <ul>
         {% for permission in user.structure.partner.permissions %}
@@ -37,35 +55,7 @@
         </ul>
         {% endif %}
 
-
-        {% if user.partner.id is defined %}
-        Nom du partenaire : {{ user.partner.name }} <br>
-        Fonctionnalités activées :
-        <ul>
-        {% for permission in user.partner.permissions %}
-            <li>
-                {% for key, value in permission %}
-                    {{ key }} : {{ value }}
-                {% endfor %}
-            </li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-
-        {# Id du Partenaire : {{ user.partner.id }} <br>
-        
-        Nom du partenaire : {{ user.partner.name }} <br>
-
-        Fonctionnalités activées :
-        <ul>
-        {% for permission in user.partner.permissions %}
-            <li>
-                {% for key, value in permission %}
-                    {{ key }} : {{ value }}
-                {% endfor %}
-            </li>
-        {% endfor %}
-        </ul> #}
+    
 
     {% endfor %}
 

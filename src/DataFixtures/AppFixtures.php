@@ -18,6 +18,7 @@ class AppFixtures extends Fixture
          $orangeUser2 = new User();
          $orangeStructure1 = new Structure();
  
+         // USER 1
          $orangeUser1
              ->setEmail('orangebleuedunkerque@direction.fr')
              ->setPassword('dunkerque')
@@ -25,6 +26,7 @@ class AppFixtures extends Fixture
              ->setRoles(['ROLE_PARTENAIRE'])
              ;
         
+         //USER 2
         $orangeUser2 = new User();
         $orangeUser2
             ->setEmail('ruetartuffe@orangebleue.fr')
@@ -33,6 +35,7 @@ class AppFixtures extends Fixture
             ->setRoles(['ROLE_STRUCTURE'])
             ;
 
+          // PARTNER 1 (rattaché à User 1)
          $orangePartner1
              ->setName('L\'orange Bleue Dunkerque')
              ->setUser($orangeUser1)
@@ -44,6 +47,8 @@ class AppFixtures extends Fixture
                  ['concours' => '1'],
              ])
              ;
+
+         // STRUCTURE 1 (rattaché à User 2)
         $orangeStructure1
             ->setUser($orangeUser2)
             ->setPartner($orangePartner1)

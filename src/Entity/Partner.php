@@ -17,7 +17,7 @@ class Partner
 
     #[ORM\OneToOne(inversedBy: 'partner', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private User $user;
+    private ?User $user;
 
     #[ORM\Column(length: 255)]
     private ?string $name;
