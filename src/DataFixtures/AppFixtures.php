@@ -39,13 +39,11 @@ class AppFixtures extends Fixture
          $orangePartner1
              ->setName('L\'orange Bleue Dunkerque')
              ->setUser($orangeUser1)
-             ->setPermissions([
-                 ['planning' => '1'],
-                 ['newsletter' => '1'],
-                 ['boissons' => '1'],
-                 ['sms' => '1'],
-                 ['concours' => '1'],
-             ])
+             ->setIsPlanning(1)
+             ->setIsNewsletter(1)
+             ->setIsBoissons(1)
+             ->setIsSms(1)
+             ->setIsConcours(1)
              ;
 
          // STRUCTURE 1 (rattaché à User 2)
@@ -53,6 +51,11 @@ class AppFixtures extends Fixture
             ->setUser($orangeUser2)
             ->setPartner($orangePartner1)
             ->setPostalAdress('3 rue tartuffe, Dunkerque')
+            ->setIsPlanning(0)
+            ->setIsNewsletter(0)
+            ->setIsBoissons(0)
+            ->setIsSms(0)
+            ->setIsConcours(0)
             ;
         
          $manager->persist($orangeUser1);

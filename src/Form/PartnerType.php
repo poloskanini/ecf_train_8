@@ -26,7 +26,7 @@ class PartnerType extends AbstractType
                 'placeholder' => 'Merci de saisir votre nom'
             ]
         ])
-            ->add('permissions')
+            ->add('isPlanning')
         ;
     }
 

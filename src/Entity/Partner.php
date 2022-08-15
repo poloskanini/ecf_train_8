@@ -22,11 +22,23 @@ class Partner
     #[ORM\Column(length: 255)]
     private ?string $name;
 
-    #[ORM\Column]
-    private array $permissions = [];
-
     #[ORM\OneToMany(mappedBy: 'partner', targetEntity: Structure::class)]
     private Collection $structures;
+
+    #[ORM\Column]
+    private bool $isPlanning;
+
+    #[ORM\Column]
+    private bool $isNewsletter;
+
+    #[ORM\Column]
+    private bool $isBoissons;
+
+    #[ORM\Column]
+    private bool $isSms;
+
+    #[ORM\Column]
+    private bool $isConcours;
 
     public function __construct()
     {
@@ -107,5 +119,65 @@ class Partner
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function isIsPlanning(): ?bool
+    {
+        return $this->isPlanning;
+    }
+
+    public function setIsPlanning(bool $isPlanning): self
+    {
+        $this->isPlanning = $isPlanning;
+
+        return $this;
+    }
+
+    public function isIsNewsletter(): ?bool
+    {
+        return $this->isNewsletter;
+    }
+
+    public function setIsNewsletter(bool $isNewsletter): self
+    {
+        $this->isNewsletter = $isNewsletter;
+
+        return $this;
+    }
+
+    public function isIsBoissons(): ?bool
+    {
+        return $this->isBoissons;
+    }
+
+    public function setIsBoissons(bool $isBoissons): self
+    {
+        $this->isBoissons = $isBoissons;
+
+        return $this;
+    }
+
+    public function isIsSms(): ?bool
+    {
+        return $this->isSms;
+    }
+
+    public function setIsSms(bool $isSms): self
+    {
+        $this->isSms = $isSms;
+
+        return $this;
+    }
+
+    public function isIsConcours(): ?bool
+    {
+        return $this->isConcours;
+    }
+
+    public function setIsConcours(bool $isConcours): self
+    {
+        $this->isConcours = $isConcours;
+
+        return $this;
     }
 }

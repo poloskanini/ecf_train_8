@@ -27,7 +27,7 @@
         {% endfor %}
         <br>
         <br>
-
+{# 
          {% if user.partner.id is defined %}
         Nom du partenaire : {{ user.partner.name }} <br>
         Fonctionnalités activées :
@@ -40,10 +40,10 @@
             </li>
         {% endfor %}
         </ul>
-        {% endif %}
+        {% endif %} #}
 
 
-        {% if user.structure.id is defined %}
+        {# {% if user.structure.id is defined %}
         Adresse postale de la structure : {{ user.structure.postalAdress }} <br>
         Cette structure est rattachée au PARTENAIRE => {{ user.structure.partner.name}} <br>
         Fonctionnalités activées :
@@ -56,7 +56,7 @@
             </li>
         {% endfor %}
         </ul>
-        {% endif %}
+        {% endif %} #}
 
     
 

@@ -42,7 +42,7 @@ class UserController extends AbstractController
         $user = new User(); // J'instancie ma classe User()
         $partner = new Partner(); // J'instancie ma classe User()
         
-        $form = $this->createForm(UserType::class, $user); // Mon formulaire CreatePartnerType qui regroupe les champs de UserType et de PartnerType
+        $form = $this->createForm(UserType::class, $user); // Mon formulaire UserType
 
         $form->handleRequest($request); // Écoute la requête entrante
 
@@ -59,8 +59,14 @@ class UserController extends AbstractController
             $user->setPartner($partner);
             $partner->setUser($user);
 
-            // Je récupère la donnée "non mappée" du formulaire UserType et l'injecte dans mon instance de Partner.
+            // Je récupère les données "non mappée" du formulaire UserType et les injecte dans mon instance de Partner.
             $partner->setName($form->get('partnerName')->getData());
+
+            $partner->setIsPlanning($form->get('isPlanning')->getData());
+            $partner->setIsNewsletter($form->get('isNewsletter')->getData());
+            $partner->setIsBoissons($form->get('isBoissons')->getData());
+            $partner->setIsSms($form->get('isSms')->getData());
+            $partner->setIsConcours($form->get('isConcours')->getData());
 
             $userRepository->add($user, true);
             $partnerRepository->add($partner, true);

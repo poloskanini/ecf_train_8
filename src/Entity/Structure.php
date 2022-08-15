@@ -24,6 +24,21 @@ class Structure
     #[ORM\Column(length: 255)]
     private ?string $postalAdress;
 
+    #[ORM\Column]
+    private bool $isPlanning;
+
+    #[ORM\Column]
+    private bool $isNewsletter;
+
+    #[ORM\Column]
+    private bool $isBoissons;
+
+    #[ORM\Column]
+    private bool $isSms;
+
+    #[ORM\Column]
+    private bool $isConcours;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,5 +83,65 @@ class Structure
     public function __toString()
     {
         return $this->postalAdress;
+    }
+
+    public function isIsPlanning(): ?bool
+    {
+        return $this->isPlanning;
+    }
+
+    public function setIsPlanning(bool $isPlanning): self
+    {
+        $this->isPlanning = $isPlanning;
+
+        return $this;
+    }
+
+    public function isIsNewsletter(): ?bool
+    {
+        return $this->isNewsletter;
+    }
+
+    public function setIsNewsletter(bool $isNewsletter): self
+    {
+        $this->isNewsletter = $isNewsletter;
+
+        return $this;
+    }
+
+    public function isIsBoissons(): ?bool
+    {
+        return $this->isBoissons;
+    }
+
+    public function setIsBoissons(bool $isBoissons): self
+    {
+        $this->isBoissons = $isBoissons;
+
+        return $this;
+    }
+
+    public function isIsSms(): ?bool
+    {
+        return $this->isSms;
+    }
+
+    public function setIsSms(bool $isSms): self
+    {
+        $this->isSms = $isSms;
+
+        return $this;
+    }
+
+    public function isIsConcours(): ?bool
+    {
+        return $this->isConcours;
+    }
+
+    public function setIsConcours(bool $isConcours): self
+    {
+        $this->isConcours = $isConcours;
+
+        return $this;
     }
 }
