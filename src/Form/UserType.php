@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use App\Entity\Partner;
+use App\Form\PartnerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,7 +24,7 @@ class UserType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom du Gérant',
+                'label' => 'Nom du User',
                 'required' => true,
                 'constraints' => new Length([
                     'min' => 2,
@@ -34,7 +35,7 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Email du Gérant',
+                'label' => 'Email du User',
                 'required' => true,
                 'constraints' => new Length([
                     'min' => 2,
@@ -74,12 +75,22 @@ class UserType extends AbstractType
                     ]
                 ],
             ])
+            ->add('partnerName', TextType::class, [
+                'mapped' => false,
+                'label' => 'Nom du Partenaire',
+                'required' => true,
+                'constraints' => new Length([
+                    'min' => 2,
+                    'max' => 30
+                ]),
+                'attr' => [
+                    'placeholder' => 'Merci de saisir le nom du Partenaire',
+                    'mapped' => false
+                ]
+            ])
             ->add('submit', SubmitType::class)
             
-            // ->add('permissions', EntityType::class, [
-            //     'class' => Partner::class,
-            //     'choice_label' => 'permissions',
-            // ])
+        
         ;
 
         // Data transformer for Roles array

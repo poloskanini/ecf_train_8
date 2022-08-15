@@ -26,15 +26,13 @@ class CreatePartnerType extends AbstractType
             ->add('user', UserType::class, [
                 'label' => false
             ])
-            ->get('user')
-              ->remove('roles')
             ->add('partner', PartnerType::class, [
                 'label' => false
             ])
-            ->add('submit', SubmitType::class)
             // Enlever des fields à PartnerType
             ->get('partner')
                 ->remove('permissions')
+            ->add('submit', SubmitType::class)
         ;
     }
 

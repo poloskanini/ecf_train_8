@@ -126,9 +126,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPartner(Partner $partner): self
     {
         // set the owning side of the relation if necessary
-        if ($partner->getUser() !== $this) {
-            $partner->setUser($this);
-        }
+        // if ($partner->getUser() !== $this) {
+        //     $partner->setUser($this);
+        // }
 
         $this->partner = $partner;
 
@@ -152,9 +152,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->name;
-    }
     
 }

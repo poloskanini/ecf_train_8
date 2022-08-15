@@ -16,7 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-#[Route('/utilisateurs')]
 class UserController extends AbstractController
 {
     #[Route('/user', name: 'app_user')]
@@ -37,11 +36,13 @@ class UserController extends AbstractController
     }
 
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $passwordHasher): Response
+    public function new(Request $request, UserRepository $userRepository, PartnerRepository $partnerRepository, UserPasswordHasherInterface $passwordHasher): Response
     {
 
-        $user = new User(); // J'instancie ma classe User(), j'ai donc un nouvel objet User
-        $form = $this->createForm(UserType::class, $user ); // J'instancie mon formulaire avec la méthode createForm... (en paramètres : la classe du formulaire, et l'objet User )
+        $user = new User(); // J'instancie ma classe User()
+        $partner = new Partner(); // J'instancie ma classe User()
+        
+        $form = $this->createForm(UserType::class, $user); // Mon formulaire CreatePartnerType qui regroupe les champs de UserType et de PartnerType
 
         $form->handleRequest($request); // Écoute la requête entrante
 
@@ -54,9 +55,15 @@ class UserController extends AbstractController
             // Je réinjecte $password qui est crypté dans l'objet User()
             $user->setPassword($password);
 
-            dd($user);
+            // Je définis que le partenaire de mon User est $partner
+            $user->setPartner($partner);
+            $partner->setUser($user);
+
+            // Je récupère la donnée "non mappée" du formulaire UserType et l'injecte dans mon instance de Partner.
+            $partner->setName($form->get('partnerName')->getData());
 
             $userRepository->add($user, true);
+            $partnerRepository->add($partner, true);
 
             $this->addFlash(
                 'success',

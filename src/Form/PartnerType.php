@@ -16,7 +16,7 @@ class PartnerType extends AbstractType
     {
         $builder
         ->add('name', TextType::class, [
-            'label' => 'Nom du partenaire',
+            'label' => 'Nom du Partner',
             'required' => true,
             'constraints' => new Length([
                 'min' => 2,
