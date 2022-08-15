@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}ECF TRAIN 8{% endblock %}
 
 {% block body %}
 <style>
@@ -10,6 +10,9 @@
 
 <div class="example-wrapper">
     <h1>ECF Train 8</h1>
+
+    <a class="btn btn-primary mb-5 ml-auto" href="{{ path('app_user_new') }}">Ajouter un nouveau partenaire </a>
+
 
     {% for user in users %}
         {{ dump(user) }}
