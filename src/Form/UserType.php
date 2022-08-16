@@ -6,6 +6,8 @@ use App\Entity\User;
 use App\Entity\Partner;
 use App\Form\PartnerType;
 use App\Repository\PartnerRepository;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -57,6 +59,7 @@ class UserType extends AbstractType
                 ],
                 'choices'  => [
                         'Partenaire' => 'ROLE_PARTNER',
+                        'Structure' => 'ROLE_STRUCTURE',
                 ],
             ])
             ->add('password', RepeatedType::class, [
@@ -147,9 +150,13 @@ class UserType extends AbstractType
                     'class' => 'form-label'
                 ]
             ])
+            // ->add('submit', SubmitType::class)
+            
+
 
             // A insérer dans le StructureType, qui sera relié au StructureController
-            // ->add('postalAdress', EntityType::class, [
+            
+            // $builder->add('postalAdress', EntityType::class, [
             //     'class' => Partner::class,
             //     'query_builder' => function (PartnerRepository $pr) {
             //         return $pr->createQueryBuilder('u')
@@ -160,9 +167,21 @@ class UserType extends AbstractType
             // ])
       
             ->add('submit', SubmitType::class)
-            
-        
         ;
+
+            // $builder->get('postalAdress')->addEventListener(
+            //     FormEvents::POST_SUBMIT,
+            //     function (FormEvent $event) {
+            //         $form = $event->getForm();
+            //         $form->getParent()->add('isPlanning', EntityType::class, [
+            //             'class' => 'App\Entity\Partner',
+            //             'placeholder' => 'Sélectionnez votre partenaire',
+            //             'mapped' => false,
+            //             'required' => false,
+            //             'choices' => $form->getData()->getPermissions()
+            //         ]);
+            //     }
+            // );
 
         // Data transformer for Roles array
         $builder->get('roles')

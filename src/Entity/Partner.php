@@ -25,6 +25,10 @@ class Partner
     #[ORM\OneToMany(mappedBy: 'partner', targetEntity: Structure::class)]
     private Collection $structures;
 
+
+    #[ORM\Column]
+    private array $permissions = [];
+
     #[ORM\Column]
     private bool $isPlanning;
 
