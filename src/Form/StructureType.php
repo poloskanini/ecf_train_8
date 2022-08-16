@@ -28,7 +28,7 @@ class StructureType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom du User',
+                'label' => 'Nom du Gérant de la structure',
                 'required' => true,
                 'constraints' => new Length([
                     'min' => 2,
@@ -39,7 +39,7 @@ class StructureType extends AbstractType
                 ]
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Email du User',
+                'label' => 'Email du Gérant de la structure',
                 'required' => true,
                 'constraints' => new Length([
                     'min' => 2,

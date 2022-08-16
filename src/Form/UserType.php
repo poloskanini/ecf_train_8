@@ -83,7 +83,7 @@ class UserType extends AbstractType
             ->add('partnerName', TextType::class, [
                 'mapped' => false,                  // Avec 'mapped' => false, je peux ajouter un champ qui n'est relié à aucune entité,
                                                     // et gérer ensuite, au sein du controlleur, à quelle variable je les affecte via les méthodes de mes entités
-                'label' => 'Nom du Partenaire',
+                'label' => 'Nom de l\'établissement Partenaire',
                 'required' => true,
                 'constraints' => new Length([
                     'min' => 2,

@@ -78,10 +78,10 @@ class StructureController extends AbstractController
                 'L\'utilisateur "' .$user->getName(). '" a été ajouté avec succès'
             );
 
-            // return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('user/_new.html.twig', [
+        return $this->renderForm('structure/_new.html.twig', [
              'user' => $user,
              'form' => $form,
         ]);
