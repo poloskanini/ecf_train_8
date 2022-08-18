@@ -27,7 +27,6 @@ class Partner
 
     #[ORM\OneToMany(targetEntity: 'App\Entity\Structure', mappedBy: 'partner')]
     // private Collection $structures;
-
     private $structures;
 
     #[ORM\Column]

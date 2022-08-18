@@ -16,6 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
+#[Route('/', name: 'app_user' ,methods: ['GET'])]
 class UserController extends AbstractController
 {
     public function __construct(EntityManagerInterface $entityManager)

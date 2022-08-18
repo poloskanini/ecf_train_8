@@ -87,13 +87,17 @@ class StructureController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_structure_show', methods: ['GET'])]
-    public function show(Structure $structure): Response
+    #[Route('/show/{id}', name: 'app_structure_show', methods: ['GET'])]
+    public function show(Structure $structure, StructureRepository $structureRepository): Response
     {
-        return $this->render('structure/show.html.twig', [
-            'structure' => $structure,
+        $partners = $structure->getPartner();
+
+        return $this->render('structure/_show.html.twig', [
+            'partners' => $partners,
+            'structure' => $structure
         ]);
     }
+
 
     #[Route('/{id}/edit', name: 'app_structure_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Structure $structure, StructureRepository $structureRepository): Response
