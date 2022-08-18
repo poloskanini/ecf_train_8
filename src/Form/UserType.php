@@ -27,28 +27,6 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, [
-                'label' => 'Nom du User',
-                'required' => true,
-                'constraints' => new Length([
-                    'min' => 2,
-                    'max' => 30
-                ]),
-                'attr' => [
-                    'placeholder' => 'Merci de saisir votre nom'
-                ]
-            ])
-            ->add('email', EmailType::class, [
-                'label' => 'Email du User',
-                'required' => true,
-                'constraints' => new Length([
-                    'min' => 2,
-                    'max' => 60
-                ]),
-                'attr' => [
-                    'placeholder' => 'Merci de saisir une adresse email'
-                ]
-            ])
             ->add('roles', ChoiceType::class, [
                 'label' => 'Type de client',
                 'required' => true,
@@ -59,8 +37,29 @@ class UserType extends AbstractType
                 ],
                 'choices'  => [
                         'Partenaire' => 'ROLE_PARTNER',
-                        'Structure' => 'ROLE_STRUCTURE',
                 ],
+            ])
+            ->add('name', TextType::class, [
+                'label' => 'Nom du partenaire',
+                'required' => true,
+                'constraints' => new Length([
+                    'min' => 2,
+                    'max' => 30
+                ]),
+                'attr' => [
+                    'placeholder' => 'Merci de saisir votre nom'
+                ]
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'Email du partenaire',
+                'required' => true,
+                'constraints' => new Length([
+                    'min' => 2,
+                    'max' => 60
+                ]),
+                'attr' => [
+                    'placeholder' => 'Merci de saisir une adresse email'
+                ]
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,

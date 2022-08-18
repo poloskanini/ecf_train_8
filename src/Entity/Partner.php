@@ -22,12 +22,13 @@ class Partner
     #[ORM\Column(length: 255)]
     private ?string $name;
 
-    #[ORM\OneToMany(mappedBy: 'partner', targetEntity: Structure::class)]
-    private Collection $structures;
+    // #[ORM\OneToMany(mappedBy: 'partner', targetEntity: Structure::class)]
+    // private Collection $structures;
 
+    #[ORM\OneToMany(targetEntity: 'App\Entity\Structure', mappedBy: 'partner')]
+    // private Collection $structures;
 
-    #[ORM\Column]
-    private array $permissions = [];
+    private $structures;
 
     #[ORM\Column]
     private bool $isPlanning;
@@ -74,18 +75,6 @@ class Partner
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getPermissions(): array
-    {
-        return $this->permissions;
-    }
-
-    public function setPermissions(array $permissions): self
-    {
-        $this->permissions = $permissions;
 
         return $this;
     }

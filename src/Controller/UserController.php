@@ -18,7 +18,6 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserController extends AbstractController
 {
-    #[Route('/user', name: 'app_user')]
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;

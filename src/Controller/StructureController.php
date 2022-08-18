@@ -52,7 +52,7 @@ class StructureController extends AbstractController
 
             // dump($form->get('id')->getData());
 
-            // Je récupère les données non mappées des booléens de mon partner (champ id en ligne 97 du StructureType) et les injecte dans ma structure.
+            // Je récupère les données non mappées des booléens de mon partner (champ 'id' en ligne 97 du StructureType) et les injecte dans ma structure.
             // Les booléens du Partner deviennent les booléens de la structure :)
             $structure->setIsPlanning($form->get('id')->getData()->isIsPlanning());
             $structure->setIsNewsletter($form->get('id')->getData()->isIsNewsletter());

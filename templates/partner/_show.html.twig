@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ECF TRAIN 8{% endblock %}
+{% block title %}ECF SHOW PARTNER{% endblock %}
 
 {% block body %}
 <style>
@@ -11,32 +11,15 @@
 <div class="example-wrapper">
     <h1>ECF Train 8</h1>
 
-    <a class="btn btn-primary mb-5" href="{{ path('app_user_new') }}">Créer un nouveau partenaire </a>
-    <br>
-    <a class="btn btn-primary mb-5 ml-auto" href="{{ path('app_structure_new') }}">Créer une nouvelle structure </a>
-    <br>
-    <a class="btn btn-primary mb-5 ml-auto" href="{{ path('app_partner_index') }}">Afficher les structures reliées à chaque partenaires </a>
-   
-
-    <h3>Users</h3>
-    {% for user in users %}
-    {{ dump(user) }}
-    {% endfor %}
-
-    <h3>Partenaires</h3>
-    {% for partner in partners %}
-    {{ dump(partner) }}
-        
-    {% endfor %}
-
-    <hr>
-
-    <h3>Structures</h3>
+    Le partenaire {{ partner.name }} possède les structures suivantes :
     {% for structure in structures %}
-    {{ dump(structure) }}
-        
+    <ul>
+      <li>
+      {{ structure.postalAdress }}
+      </li>
+    </ul>
     {% endfor %}
-   
+
 
     {# {% for user in users %}
         {{ dump(user) }}

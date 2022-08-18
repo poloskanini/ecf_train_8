@@ -27,6 +27,18 @@ class StructureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+         ->add('roles', ChoiceType::class, [
+                'label' => 'Type de client',
+                'required' => true,
+                'multiple' => false,
+                'attr' => [
+                    'class' => 'form-select',
+                    'placeholder' => 'Type de client'
+                ],
+                'choices'  => [
+                        'Structure' => 'ROLE_STRUCTURE',
+                ],
+            ])
             ->add('name', TextType::class, [
                 'label' => 'Nom du Gérant de la structure',
                 'required' => true,
@@ -48,18 +60,6 @@ class StructureType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Merci de saisir une adresse email'
                 ]
-            ])
-            ->add('roles', ChoiceType::class, [
-                'label' => 'Type de client',
-                'required' => true,
-                'multiple' => false,
-                'attr' => [
-                    'class' => 'form-select',
-                    'placeholder' => 'Type de client'
-                ],
-                'choices'  => [
-                        'Structure' => 'ROLE_STRUCTURE',
-                ],
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,

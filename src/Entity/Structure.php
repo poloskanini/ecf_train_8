@@ -17,7 +17,11 @@ class Structure
     #[ORM\JoinColumn(nullable: false)]
     private User $user;
 
-    #[ORM\ManyToOne(inversedBy: 'structures')]
+    // #[ORM\ManyToOne(inversedBy: 'structures')]
+    // #[ORM\JoinColumn(nullable: false)]
+    // private Partner $partner;
+
+    #[ORM\ManyToOne(targetEntity: 'App\Entity\Partner', inversedBy: 'structures')]
     #[ORM\JoinColumn(nullable: false)]
     private Partner $partner;
 
